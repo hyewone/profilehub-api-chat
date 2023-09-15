@@ -1,0 +1,53 @@
+spring:
+  profiles:
+    include:
+      - comm
+---
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    enabled: false
+  data:
+    mongodb:
+      uri: mongodb+srv://Cluster81439:dlBqb2ZUd09j@cluster81439.o1p843n.mongodb.net/?retryWrites=true&w=majority
+      database: profilehub
+---
+server:
+  config:
+    activate:
+      on-profile: prod
+  port: 8080
+  error.include-message: always
+  tomcat:
+    max-swallow-size: -1
+
+logging:
+  config:
+    activate:
+      on-profile: prod
+  level:
+    root: ERROR
+---
+server:
+  config:
+    activate:
+      on-profile: local
+  port: 7003
+  error.include-message: always
+  tomcat:
+    max-swallow-size: -1
+
+logging:
+  config:
+    activate:
+      on-profile: local
+  level:
+    root: DEBUG
+
+custom:
+  config:
+    activate:
+      on-profile: local
+  host:
+    authApi: http://localhost:7002
