@@ -26,7 +26,7 @@ public class SecurityConfig {
 //    private final RestTemplate restTemplate;
     private final String[] allowedUrls = {"/"
                             , "/v1/open/**"
-                            , "/swagger-ui/**"
+                            , "/webjars/swagger-ui/**"
                             , "/swagger-resources/**"
                             , "/v3/api-docs/**"
     };
