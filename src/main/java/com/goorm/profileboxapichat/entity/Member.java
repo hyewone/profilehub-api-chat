@@ -26,4 +26,6 @@ public class Member {
     private LocalDateTime createDt;
 
     private LocalDateTime modifyDt;
+
+    private Profile profile;
 }

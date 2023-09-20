@@ -13,5 +13,6 @@ public class ChatRoom {
     @Id
     private String id;
     private List<String> attendeeIdList;
+    private String title;
     private LocalDateTime createDt;
 }

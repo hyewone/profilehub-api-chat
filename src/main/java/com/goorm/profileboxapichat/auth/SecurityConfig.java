@@ -19,11 +19,6 @@ public class SecurityConfig {
 
     private final AuthenticationManager authenticationManager;
     private final AuthConverter authConverter;
-
-//    private final CorsFilter corsFilter;
-//    private final AuthenticationConfiguration authenticationConfiguration;
-//    private final JwtProvider jwtProvider;
-//    private final RestTemplate restTemplate;
     private final String[] allowedUrls = {"/"
                             , "/v1/open/**"
                             , "/webjars/swagger-ui/**"
@@ -41,13 +36,28 @@ public class SecurityConfig {
                 .formLogin().disable()
                 .httpBasic().disable()
                 .addFilterAfter(filter, SecurityWebFiltersOrder.AUTHENTICATION)
-//                .addFilterBefore(corsFilter)
 //                .authenticationManager(authenticationManager)
 //                .securityContextRepository(securityContextRepository)
                 .authorizeExchange()
 //                .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .pathMatchers(allowedUrls).permitAll()
                 .anyExchange().authenticated();
+//                .anyExchange().permitAll();
         return http.build();
     }
+
+//    @Bean
+//    public CorsConfigurationSource corsFilter() {
+//        CorsConfiguration corsConfig = new CorsConfiguration();
+//        corsConfig.addAllowedOrigin("http://localhost:3000");
+//        corsConfig.setAllowCredentials(true); // 자격 증명 허용
+//        corsConfig.addAllowedHeader("*");
+//        corsConfig.addAllowedMethod(HttpMethod.GET);
+//        corsConfig.addAllowedMethod(HttpMethod.POST);
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//
+//        return source;
+//    }
 }

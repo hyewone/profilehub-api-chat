@@ -9,7 +9,8 @@ import reactor.core.publisher.Flux;
 public interface ChatRoomRepository extends ReactiveMongoRepository<ChatRoom, String> {
 
     @Tailable
-    @Query("{'attendeeIdList': ?0}")
+//    @Query("{'attendeeIdList': ?0}")
+    @Query("{ attendeeIdList: { $in: [ ?0 ] } }")
     Flux<ChatRoom> findChatRoomByMemberId(String memberId);
 
 }
